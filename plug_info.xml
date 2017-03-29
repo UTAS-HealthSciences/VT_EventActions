@@ -1,0 +1,87 @@
+<plugin id="eventsPlugin" category="Advanced" name="tr:Call actions on tour events" description="tr:Allows you to call actions on tour events" version="1.2" isGraphical="true" multipleInstance="true">
+  <parameters>
+  	<group id="enterFullscreenGroup">
+	  <bool  id="enterfullscreen" name="React to enter fullscreen event"/>
+	  <actionlist id="fullscreenactions" name="tr:Actions triggered on fullscreen" conditionalParam="enterfullscreen" conditionalValues="true">
+	    <actionchooser id="onfullscreenaction" name="tr:Action" description="tr:Action triggered on fullscreen"/>
+	  </actionlist>
+	</group>
+  	<group id="exitFullscreenGroup">
+	  <bool  id="exitfullscreen" name="React to exit fullscreen event"/>
+	  <actionlist id="exitfullscreenactions" name="tr:Actions triggered on exit fullscreen" conditionalParam="exitfullscreen" conditionalValues="true">
+	    <actionchooser id="onexitfullscreenaction" name="tr:Action" description="tr:Action triggered on exit fullscreen"/>
+	  </actionlist>
+	</group>
+  	<group id="onTourStartGroup">
+	  <bool  id="ontourstart" name="React when the tour starts, after introduction effects"/>
+	  <actionlist id="ontourstartactions" name="tr:Actions triggered when the tour starts" conditionalParam="ontourstart" conditionalValues="true">
+	    <actionchooser id="ontourstartaction" name="tr:Action" description="tr:Action triggered when the tour starts"/>
+	  </actionlist>
+	</group>
+  	<group id="onNexPanoramaGroup">
+	  <bool  id="onnewpano" name="React when a new panorama is loaded"/>
+	  <actionlist id="onnewpanoactions" name="tr:Actions triggered when a new panorama is loaded" conditionalParam="onnewpano" conditionalValues="true">
+	    <actionchooser id="onnewpanoaction" name="tr:Action" description="tr:Action triggered when a new panorama is loaded"/>
+	  </actionlist>
+	</group>
+  	<group id="onPanoStartGroup">
+	  <bool  id="onpanostart" name="React when the panorama starts, after introduction effects"/>
+	  <actionlist id="onpanostartactions" name="tr:Actions triggered when the panorama starts" conditionalParam="onpanostart" conditionalValues="true">
+	    <actionchooser id="onpanostartaction" name="tr:Action" description="tr:Action triggered when the panorama starts"/>
+      </actionlist>
+	</group>
+  	<group id="startautorotationgroup">
+	  <bool  id="startautorotation" name="React when the autorotation starts"/>
+	  <actionlist id="startautorotationactions" name="tr:Actions triggered when autorotation starts" conditionalParam="startautorotation" conditionalValues="true">
+	    <actionchooser id="startautorotationaction" name="tr:Action" description="tr:Action triggered when autorotation starts"/>
+	  </actionlist>
+    </group>
+  	<group id="stopautorotationgroup">
+	  <bool  id="stopautorotation" name="React when the autorotation stops"/>
+	  <actionlist id="stopautorotationactions" name="tr:Actions triggered when autorotation stops" conditionalParam="stopautorotation" conditionalValues="true">
+	    <actionchooser id="stopautorotationaction" name="tr:Action" description="tr:Action triggered when autorotation stops"/>
+	  </actionlist>
+    </group>
+  	<group id="showtourcontrolsgroup">
+	  <bool  id="showtourcontrols" name="React when the tour controls are displayed"/>
+	  <actionlist id="showtourcontrolsactions" name="tr:Actions triggered when the tour controls are displayed" conditionalParam="showtourcontrols" conditionalValues="true">
+	    <actionchooser id="showtourcontrolsaction" name="tr:Action" description="tr:Action triggered when the tour controls are displayed"/>
+	  </actionlist>
+    </group>
+  	<group id="hidetourcontrolsgroup">
+	  <bool  id="hidetourcontrols" name="React when the tour controls are hidden"/>
+	  <actionlist id="hidetourcontrolsactions" name="tr:Actions triggered when the tour controls are hidden" conditionalParam="hidetourcontrols" conditionalValues="true">
+	    <actionchooser id="hidetourcontrolsaction" name="tr:Action" description="tr:Action triggered when the tour controls are hidden"/>
+	  </actionlist>
+    </group>
+  	<group id="playtoursoundsgroup">
+	  <bool  id="playtoursounds" name="React when sound is turned on"/>
+	  <actionlist id="playtoursoundsactions" name="tr:Actions triggered when sound is turned on" conditionalParam="playtoursounds" conditionalValues="true">
+	    <actionchooser id="playtoursoundsaction" name="tr:Action" description="tr:Action triggered when sound is turned on"/>
+	  </actionlist>
+    </group>
+  	<group id="stoptoursoundsgroup">
+	  <bool  id="stoptoursounds" name="React when sound is turned off"/>
+	  <actionlist id="stoptoursoundsactions" name="tr:Actions triggered when sound is turned off" conditionalParam="stoptoursounds" conditionalValues="true">
+	    <actionchooser id="stoptoursoundsaction" name="tr:Action" description="tr:Action triggered when sound is turned off"/>
+	  </actionlist>
+    </group>
+  	<group id="onvideocompletegroup">
+	  <bool  id="onvideocomplete" name="React when the video scene is complete"/>
+	  <actionlist id="onvideocompleteactions" name="tr:Actions triggered when the video scene is complete" conditionalParam="onvideocomplete" conditionalValues="true">
+	    <actionchooser id="onvideocompleteaction" name="tr:Action" description="tr:Action triggered when the video scene is complete"/>
+	  </actionlist>
+    </group>
+
+    <group id="panospecgroup">
+	  	<bool id="panospecific" name="Use this plugin on specific panoramas" default="false"/>
+	    <elementlist id="panoidgroup" name="tr:Panorama IDs"  conditionalParam="panospecific" conditionalValues="true">
+	      <string id="panoid" name="Panorama ID" />
+	    </elementlist>
+    </group>
+
+  </parameters>
+  <templates>
+    <template url="template.tmpl" />
+  </templates>
+</plugin>

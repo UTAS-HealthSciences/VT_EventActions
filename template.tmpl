@@ -1,0 +1,110 @@
+{% if displaycomments %}
+<!-- ********** -->
+<!-- {{p.name|commentsafe}} -->
+<!-- id : {{p.id}} -->
+<!-- ********** -->
+{% endif %}{% with p.id as plugname %}
+  <events name="{{plugname}}events" keep="true"{% if p.enterfullscreen.value %} onenterfullscreen="{{plugname}}onenterfullscreen()"{% endif %}{% if p.exitfullscreen.value %} onexitfullscreen="{{plugname}}onexitfullscreen()"{% endif %}{% if p.ontourstart.value %} onTourStart="{{plugname}}ontourstarts()"{% endif %}{% if p.onpanostart.value %} onPanoStart="{{plugname}}onpanostarts()"{% endif %}{% if p.onnewpano.value %} onnewpano="{{plugname}}onnewpano()"{% endif %}{% if p.startautorotation.value %} onstartautorotation="{{plugname}}onstartautorotation()"{% endif %}{% if p.stopautorotation.value %} onstopautorotation="{{plugname}}onstopautorotation()"{% endif %}{% if p.showtourcontrols.value %} showtourcontrols="{{plugname}}showtourcontrols()"{% endif %}{% if p.hidetourcontrols.value %} hidetourcontrols="{{plugname}}hidetourcontrols()"{% endif %}{% if p.playtoursounds.value %} playtoursoundsevent="{{plugname}}playtoursounds()"{% endif %}{% if p.stoptoursounds.value %} stoptoursoundsevent="{{plugname}}stoptoursounds()"{% endif %}{% if p.onvideocomplete.value %} onxmlcomplete="{{plugname}}_applyvideoevent();" {%endif%}/>
+{% if p.enterfullscreen.value %}
+  <action name="{{plugname}}onenterfullscreen">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+{% if p.fullscreenactions.actions.count %}{%with p.fullscreenactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set on Enter Fullscreen");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.exitfullscreen.value %}
+  <action name="{{plugname}}onexitfullscreen">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+{% if p.exitfullscreenactions.actions.count %}{%with p.exitfullscreenactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set on Exit Fullscreen");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.ontourstart.value %}
+  <action name="{{plugname}}ontourstarts">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+{% if p.ontourstartactions.actions.count %}{%with p.ontourstartactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set on tour start");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.onpanostart.value %}
+  <action name="{{plugname}}onpanostarts">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+{% if p.onpanostartactions.actions.count %}{%with p.onpanostartactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set on pano start");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.onnewpano.value %}
+  <action name="{{plugname}}onnewpano">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+{% if p.onnewpanoactions.actions.count %}{%with p.onnewpanoactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set on new pano");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.startautorotation.value %}
+  <action name="{{plugname}}onstartautorotation">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+{% if p.startautorotationactions.actions.count %}{%with p.startautorotationactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set on start autorotation");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.stopautorotation.value %}
+  <action name="{{plugname}}onstopautorotation">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+{% if p.stopautorotationactions.actions.count %}{%with p.stopautorotationactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set on stop autorotation");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.showtourcontrols.value %}
+  <action name="{{plugname}}showtourcontrols">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+{% if p.showtourcontrolsactions.actions.count %}{%with p.showtourcontrolsactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set when tour controls are shown");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.hidetourcontrols.value %}
+  <action name="{{plugname}}hidetourcontrols">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+{% if p.hidetourcontrolsactions.actions.count %}{%with p.hidetourcontrolsactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set when tour controls are hidden");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.playtoursounds.value %}
+  <action name="{{plugname}}playtoursounds">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+{% if p.playtoursoundsactions.actions.count %}{%with p.playtoursoundsactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set when sound is turned on");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.stoptoursounds.value %}
+  <action name="{{plugname}}stoptoursounds">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+{% if p.stoptoursoundsactions.actions.count %}{%with p.stoptoursoundsactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set when sound is turned off");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.onvideocomplete.value %}
+  <action name="{{plugname}}_applyvideoevent">
+  if(scene[get(xml.scene)].video == true,
+  if(scene[get(xml.scene)].scenevideoloop == false,
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+  set(scene[get(xml.scene)].scenevideoendaction, true);
+  set(plugin[ptvideosceneplayer].onvideocomplete,{{plugname}}onvideocomplete(););
+{%if p.panospecific.value %}  );{% endif %}
+  ););
+  </action>
+  <action name="{{plugname}}onvideocomplete">
+{% if p.panospecific.value %}  {{plugname}}CheckIfActionShouldBeDone();
+  if (dotheaction{{plugname}},{% endif %}
+    pause();
+	set(scene[get(xml.scene)].scenevideoendaction, false);
+{% if p.onvideocompleteactions.actions.count %}{%with p.onvideocompleteactions.actions as actions%}    {% include 'calltemplate.tmpl' %}{%endwith%}{% else %}
+    trace("No Action set on video complete");
+{% endif %}{%if p.panospecific.value %}  );{% endif %}
+  </action>{% endif %}{% if p.panospecific.value %}
+  <action name="{{plugname}}CheckIfActionShouldBeDone">
+    set(dotheaction{{plugname}}, false);{% ifequal p.panoidgroup.elements.count 1 %}{% for panoid in p.panoidgroup.elements %}{%ifequal panoid.value ""%}
+    trace("No Panorama ID is set - The action will never be called");{%endifequal%}{% endfor %}{%endifequal%}{% for panoid in p.panoidgroup.elements %}{%ifnotequal panoid.value ""%}
+    if (xml.scene == {{panoid.value}}, set(dotheaction{{plugname}}, true); );{%endifnotequal%}{% endfor %}
+  </action>{% endif %}
+{% endwith %}
